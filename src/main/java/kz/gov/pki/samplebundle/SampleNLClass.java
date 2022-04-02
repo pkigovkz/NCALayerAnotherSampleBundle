@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import kz.gov.pki.osgi.layer.annotations.NCALayerClass;
 import kz.gov.pki.osgi.layer.annotations.NCALayerMethod;
 import kz.gov.pki.osgi.layer.exception.CommonException;
+import kz.gov.pki.samplebundle.exception.SampleFailure;
 
 /*
  * CommonInvoker registers classes annotated with @NCALayerClass
@@ -28,13 +29,13 @@ public class SampleNLClass {
     }
     */
     @NCALayerMethod
-    public String salemAit(String jsonString) throws CommonException {
+    public String salemAit(String jsonString) {
         JSONObject jsonArgs = new JSONObject(jsonString);
         String firstname = jsonArgs.optString("firstname");
         String lastname = jsonArgs.optString("lastname");
         // throw a detailed exception
         if (firstname.isEmpty()) {
-            throw new CommonException("firstname_is_empty", "Name yourself!");
+            throw new CommonException(SampleFailure.EMPTY_FIRSTNAME);
         }
         return String.format("Salem, %s %s", firstname, lastname);
     }

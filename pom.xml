@@ -39,7 +39,7 @@
 		<dependency>
             <groupId>kz.gov.pki.osgi.layer</groupId>
             <artifactId>nlcommons</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>provided</scope>
         </dependency>
 		<dependency>
